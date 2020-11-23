@@ -6,17 +6,37 @@ body {
 
 /* Dynamic sizing and column count */
 .grid-2 {
+    min-height: 100vh;
+    /* Address the items as a group */
+    /* default value is stretch */
+    align-content: center;
+    justify-content: center;
+
+    /* Position contents within cell */
+    justify-items: end;
+    align-items: end;
+
     display: grid;
     /* Create space between items */
     grid-gap: 2px;
     /* Uncomment to see differences, and comment the other line out */
     /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, 150px);
+    /* Dont define explicit rows, but implicit */
+    grid-auto-rows: 200px;
+
+    background-color: coral;
 }
 
 .grid-2 div {
     background-color: mistyrose;
     padding: 4px;
+}
+
+.grid-2 div:nth-of-type(odd) {
+    /* Overwrite position of cell contents for idividual grid items */
+    justify-self: start;
+    align-self: start;
 }
 
 /* Template named areas */
@@ -29,6 +49,7 @@ body {
 .site-header {
     grid-area: siteheader;
     padding: 8px 20px;
+    border-bottom: 2px solid #444;
 }
 
 article {
